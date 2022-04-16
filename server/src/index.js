@@ -11,10 +11,10 @@ app.listen(process.env.PORT, () =>
   console.log(`Server is Running at PORT : ${process.env.PORT}`)
 );
 
-app.get("/", (req, res) => res.send("HOME"));
+app.get("/", (_, res) => res.send("HOME"));
 
 // 현재 DB를 가져옵니다.
-app.get("/db", (req, res) => {
+app.get("/db", (_, res) => {
   getDB()
     .then((data) => res.send(data))
     .catch((err) => console.error(err));
