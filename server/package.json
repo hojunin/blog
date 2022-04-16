@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Node Server for HJINN Blog",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src/ src/index.js"
+  },
+  "keywords": [
+    "hjinn",
+    "hojunin"
+  ],
+  "author": "hojunin",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^1.0.4",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "node-cron": "^3.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
