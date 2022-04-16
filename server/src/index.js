@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { getDB } from "./notion.js";
+import { getDB, getPage } from "./notion.js";
 import { scheduler } from "./scheduler.js";
 import cors from "cors";
 
@@ -17,11 +17,15 @@ app.listen(process.env.PORT, () =>
 app.get("/", (_, res) => res.send("HOME"));
 app.get("/other", (_, res) => res.send("OTHER"));
 
+app.get("/page", (_, res) => {
+  console.log("PAGE");
+  getPage().then((data) => res.json(data));
+});
+
 // 현재 DB를 가져옵니다.
 app.get("/db", (_, res) => {
   getDB()
     .then((data) => res.json(data))
-
     .catch((err) => console.error(err));
 });
 
@@ -30,3 +34,6 @@ app.post("/publish", (req, res) => {});
 app.get("/search", (req, res) => {
   //search
 });
+
+// 게시글 삭제
+app.delete("/post", (req, res) => {});

@@ -1,25 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Post() {
-  const [data, setData] = useState();
-
+const Posts = () => {
+  const [data, setData] = useState({});
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3000/db");
-    console.log("🚀 DATA :  ~ response", response);
+    const response = await axios.get("http://localhost:3000/page");
+    console.log(response);
   };
-
   useEffect(() => {
-    fetchData();
+    fetchData;
   }, []);
-
-  if (!data) return <></>;
 
   return (
     <>
-      <h1 className="bg-red-700">Post</h1>
+      <h1>Posts</h1>
     </>
   );
-}
+};
 
-export default Post;
+export default Posts;
