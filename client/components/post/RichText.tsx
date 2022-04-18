@@ -6,12 +6,18 @@ interface RichTextProps {
 }
 
 const RichText = ({ rich_text }: RichTextProps) => {
-    const { annotation, href, text, type, plain_text } = rich_text;
+    const { annotations, href, text, type, plain_text } = rich_text;
+    const { bold, code, color, italic, underline, strikethrough } = annotations;
 
     return (
-        <>
-            <span className="bg-lime-400">{rich_text.plain_text}</span>
-        </>
+        <a
+            href={href && href}
+            className={`${italic && 'italic'} ${bold && 'font-bold'} ${annotations} ${underline && 'underline'} ${
+                color !== 'default' && 'text-cyan-500'
+            } ${strikethrough && 'line-through'}`}
+        >
+            {rich_text.plain_text}
+        </a>
     );
 };
 

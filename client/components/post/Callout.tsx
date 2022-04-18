@@ -1,7 +1,6 @@
 import React from 'react';
 import { CALLOUT } from '../../types/block';
 import Icon from './Icon';
-import RichText from './RichText';
 import RichTexts from './RichTexts';
 
 interface CalloutProps {

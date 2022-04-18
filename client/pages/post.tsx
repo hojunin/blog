@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Block from '../components/posts/Block';
+import Blocks from '../components/posts/Blocks';
 import { BLOCK } from '../types/block';
 
 const Posts = () => {
@@ -14,13 +14,7 @@ const Posts = () => {
         fetchData();
     }, []);
 
-    return (
-        <>
-            {blocks.map((block) => (
-                <Block key={block.id} block={block} />
-            ))}
-        </>
-    );
+    return <Blocks blocks={blocks} />;
 };
 
 export default Posts;
