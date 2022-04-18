@@ -2,17 +2,15 @@ import React from 'react';
 import { RICH_TEXT } from '../../types/global';
 
 interface RichTextProps {
-    data: RICH_TEXT[];
+    rich_text: RICH_TEXT;
 }
 
-const RichText = ({ data }: RichTextProps) => {
+const RichText = ({ rich_text }: RichTextProps) => {
+    const { annotation, href, text, type, plain_text } = rich_text;
+
     return (
         <>
-            {data.map((datum, index) => (
-                <span className=" bg-lime-400" key={index.toString()}>
-                    {datum.plain_text}
-                </span>
-            ))}
+            <span className="bg-lime-400">{rich_text.plain_text}</span>
         </>
     );
 };

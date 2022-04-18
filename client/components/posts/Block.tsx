@@ -11,7 +11,6 @@ interface BlockProps {
 }
 
 const Block = ({ block }: BlockProps) => {
-    console.log('🚀 ~ file: Block.tsx ~ line 14 ~ Block ~ block', block);
     switch (block.type) {
         case 'divider':
             return <Divider />;
@@ -22,7 +21,7 @@ const Block = ({ block }: BlockProps) => {
         case 'table':
             return <Table />;
         case 'paragraph':
-            return <Paragraph />;
+            return <Paragraph paragraph={block.paragraph} />;
 
         default:
             return <></>;
