@@ -5,27 +5,39 @@ import Divider from '../post/Divider';
 import Paragraph from '../post/Paragraph';
 import Table from '../post/Table';
 import Toggle from '../post/Toggle';
+import Blocks from './Blocks';
 
 interface BlockProps {
     block: BLOCK;
 }
 
+// has_children인 객체들을 어떻게 처리할까
 const Block = ({ block }: BlockProps) => {
-    switch (block.type) {
-        case 'divider':
-            return <Divider />;
-        case 'callout':
-            return <Callout data={block.callout} />;
-        case 'toggle':
-            return <Toggle />;
-        case 'table':
-            return <Table />;
-        case 'paragraph':
-            return <Paragraph paragraph={block.paragraph} />;
+    const BlockByType = () => {
+        switch (block.type) {
+            case 'divider':
+                return <Divider />;
+            case 'callout':
+                return <Callout data={block.callout} />;
+            case 'toggle':
+                return <Toggle />;
+            case 'table':
+                return <Table />;
+            case 'paragraph':
+                return <Paragraph paragraph={block.paragraph} />;
+            case 'column_list':
+                return <Blocks blocks={[]} />;
 
-        default:
-            return <></>;
-    }
+            default:
+                return <></>;
+        }
+    };
+
+    return (
+        <div className=" mb-10">
+            <BlockByType />
+        </div>
+    );
 };
 
 export default Block;
