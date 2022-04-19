@@ -8,7 +8,7 @@ const Posts = () => {
 
     const fetchData = async () => {
         const response = await axios.get('http://localhost:3000/page');
-        setBlocks(response.data.results);
+        setBlocks(response.data);
     };
     useEffect(() => {
         fetchData();

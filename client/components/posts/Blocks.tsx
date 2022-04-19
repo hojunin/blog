@@ -1,5 +1,6 @@
 import React from 'react';
 import { BLOCK } from '../../types/block';
+import { isBlocks } from '../../types/typeGuards/block';
 import Block from './Block';
 
 interface BlocksProps {
@@ -7,13 +8,16 @@ interface BlocksProps {
 }
 
 const Blocks = ({ blocks }: BlocksProps) => {
-    return (
-        <>
-            {blocks.map((block) => (
-                <Block key={block.id} block={block} />
-            ))}
-        </>
-    );
+    if (isBlocks(blocks)) {
+        return (
+            <>
+                {blocks.map((block) => (
+                    <Block key={block.id} block={block} />
+                ))}
+            </>
+        );
+    }
+    return <></>;
 };
 
 export default Blocks;
