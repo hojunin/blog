@@ -48,7 +48,9 @@ export interface BLOCK {
     paragraph?: PARAGRAPH;
     divider?: {};
     table: TABLE;
+    image?: IMAGE;
     table_row?: {
         cells: BLOCK[][];
     };
+    childrens: BLOCK[];
 }
