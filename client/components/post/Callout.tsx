@@ -9,7 +9,7 @@ interface CalloutProps {
 
 const Callout = ({ data }: CalloutProps) => {
     return (
-        <div className="bg-slate-500 p-10 caret-lime-400 rounded-md flex-row">
+        <div className="bg-slate-300 p-10 caret-lime-400 rounded-md flex-row">
             <Icon icon={data.icon} />
             <RichTexts rich_texts={data.rich_text} />
         </div>

@@ -14,7 +14,11 @@ const Posts = () => {
         fetchData();
     }, []);
 
-    return <Blocks blocks={blocks} />;
+    return (
+        <div className="flex-1">
+            <Blocks blocks={blocks} />
+        </div>
+    );
 };
 
 export default Posts;
