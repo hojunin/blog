@@ -4,5 +4,5 @@ export const isBlock = (block: unknown): block is BLOCK => {
 };
 
 export const isBlocks = (blocks: unknown[]): blocks is BLOCK[] => {
-    return (blocks as BLOCK[]).every(isBlock);
+    return Array.isArray(blocks) && (blocks as BLOCK[]).every(isBlock);
 };

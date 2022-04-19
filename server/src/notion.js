@@ -30,19 +30,17 @@ export async function getPage(page_id) {
         const page = await getBlocks(page_id);
 
         const pagePromises = page.results.map((result) => {
-            return new Promise((resolve) => {
-                if (result.has_children) {
-                    getBlocks(result.id).then((data) => (result.children = data));
-                }
-                return resolve(result);
-            });
+            if (result.has_children) {
+                const childrenBlocks = getBlocks(result.id);
+                result.childrens = childrenBlocks;
+            }
+            return result;
         });
 
-        Promise.all(pagePromises)
-            .then((data) => console.log(data))
-            .catch((err) => console.error(err));
+        const data = await Promise.all(pagePromises);
+
+        return data;
     } catch (err) {
-        console.error(err);
         throw new Error(err);
     }
 }

@@ -6,12 +6,12 @@ import Paragraph from '../post/Paragraph';
 import Table from '../post/Table';
 import Toggle from '../post/Toggle';
 import Blocks from './Blocks';
+import Image from '../post/Image';
 
 interface BlockProps {
     block: BLOCK;
 }
 
-// has_children인 객체들을 어떻게 처리할까 -> 서버에서 처리하는게 좋을듯
 const Block = ({ block }: BlockProps) => {
     const BlockByType = () => {
         switch (block.type) {
@@ -25,8 +25,11 @@ const Block = ({ block }: BlockProps) => {
                 return <Table />;
             case 'paragraph':
                 return <Paragraph paragraph={block.paragraph} />;
+            case 'image':
+                return <Image image={block.image} />;
             case 'column_list':
-                return <Blocks blocks={[]} />;
+                // ? row 정렬한 container에 넣으면 될듯?
+                return <Blocks blocks={block.childrens} />;
 
             default:
                 return <></>;
@@ -36,6 +39,7 @@ const Block = ({ block }: BlockProps) => {
     return (
         <div className=" mb-10">
             <BlockByType />
+            {block.has_children && <Blocks blocks={block.childrens} />}
         </div>
     );
 };
