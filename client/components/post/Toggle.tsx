@@ -1,7 +1,17 @@
-import React from "react";
+import React from 'react';
+import { TOGGLE } from '../../types/block';
+import RichTexts from './RichTexts';
 
-const Toggle = () => {
-  return <div>Toggle</div>;
+interface ToggleProps {
+    toggle: TOGGLE;
+}
+
+const Toggle = ({ toggle }: ToggleProps) => {
+    return (
+        <>
+            <RichTexts rich_texts={toggle.rich_text} />
+        </>
+    );
 };
 
 export default Toggle;

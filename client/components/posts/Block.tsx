@@ -11,7 +11,7 @@ interface BlockProps {
     block: BLOCK;
 }
 
-// has_children인 객체들을 어떻게 처리할까
+// has_children인 객체들을 어떻게 처리할까 -> 서버에서 처리하는게 좋을듯
 const Block = ({ block }: BlockProps) => {
     const BlockByType = () => {
         switch (block.type) {
@@ -20,7 +20,7 @@ const Block = ({ block }: BlockProps) => {
             case 'callout':
                 return <Callout data={block.callout} />;
             case 'toggle':
-                return <Toggle />;
+                return <Toggle toggle={block.toggle} />;
             case 'table':
                 return <Table />;
             case 'paragraph':
