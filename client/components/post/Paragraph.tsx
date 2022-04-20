@@ -7,7 +7,6 @@ interface ParagraphProps {
 }
 
 const Paragraph = ({ paragraph }: ParagraphProps) => {
-    console.log('🚀 ~ file: Paragraph.tsx ~ line 9 ~ Paragraph ~ paragraph', paragraph);
     return (
         <div>
             <RichTexts rich_texts={paragraph.rich_text} />
