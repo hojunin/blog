@@ -7,7 +7,11 @@ interface ImageProps {
 
 const Image = ({ image }: ImageProps) => {
     const { file } = image;
-    return <img className="rounded-md flex-1 w-2/6" src={file.url} alt="image" />;
+    return (
+        <div className="flex flex-1 justify-center">
+            <img className="rounded-md w-2/6 self-center" src={file.url} alt="image" />
+        </div>
+    );
 };
 
 export default Image;

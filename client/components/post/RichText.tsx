@@ -12,11 +12,11 @@ const RichText = ({ rich_text }: RichTextProps) => {
     return (
         <a
             href={href && href}
-            className={`${italic && 'italic'} ${bold && 'font-bold'} ${annotations} ${underline && 'underline'} ${
-                color !== 'default' && 'text-cyan-500'
-            } ${strikethrough && 'line-through'}`}
+            className={` mr-1 ${italic && 'italic'} ${bold && 'font-bold'} ${annotations} ${underline && 'underline'} ${
+                strikethrough && 'line-through'
+            } text-${color}-300`}
         >
-            {rich_text.plain_text}
+            {`${rich_text.plain_text}`}
         </a>
     );
 };

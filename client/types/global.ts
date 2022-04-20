@@ -11,7 +11,11 @@ type ANNOTATIONS = {
     strikethrough: boolean;
     underline: boolean;
     code: boolean;
-    color: 'default' | '';
+    color: COLOR_TYPE;
+};
+
+type EQUATION = {
+    expression: string;
 };
 
 type RICH_TEXT = {
@@ -20,6 +24,7 @@ type RICH_TEXT = {
     annotations: ANNOTATIONS;
     plain_text: string;
     href: string;
+    equation?: EQUATION;
 };
 
 type ICON = {
@@ -27,4 +32,6 @@ type ICON = {
     emoji: string;
 };
 
-export type { TEXT_TYPE, ANNOTATIONS, RICH_TEXT, ICON };
+type COLOR_TYPE = 'default' | 'red' | 'purple' | 'blue' | 'yellow' | 'orange' | 'grey';
+
+export type { TEXT_TYPE, ANNOTATIONS, RICH_TEXT, ICON, COLOR_TYPE };
