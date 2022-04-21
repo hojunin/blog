@@ -8,6 +8,8 @@ import Toggle from '../post/Toggle';
 import Blocks from './Blocks';
 import Image from '../post/Image';
 import Code from '../post/Code';
+import Heading from '../post/Heading';
+import RichTexts from '../post/RichTexts';
 
 interface BlockProps {
     block: BLOCK;
@@ -30,7 +32,6 @@ const Block = ({ block }: BlockProps) => {
                 return <Image image={block.image} />;
             case 'column_list':
                 const { results } = block.childrens;
-                console.log(results);
                 return (
                     <div className="flex flex-row h-20 bg-blue-50">
                         <Blocks blocks={results} />
@@ -38,6 +39,16 @@ const Block = ({ block }: BlockProps) => {
                 );
             case 'code':
                 return <Code code={block.code} />;
+            case 'heading_1':
+                return <Heading heading={block.heading_1} headingSize={1} />;
+            case 'heading_2':
+                return <Heading heading={block.heading_2} headingSize={2} />;
+            case 'heading_3':
+                return <Heading heading={block.heading_3} headingSize={3} />;
+            case 'bulleted_list_item':
+                return <RichTexts rich_texts={block.bulleted_list_item?.rich_text} />;
+            case 'numbered_list_item':
+                return <RichTexts rich_texts={block.numbered_list_item?.rich_text} />;
 
             default:
                 return <></>;

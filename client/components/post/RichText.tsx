@@ -8,7 +8,7 @@ interface RichTextProps {
 const RichText = ({ rich_text }: RichTextProps) => {
     const { annotations, href, text, type, plain_text } = rich_text;
     const { bold, code, color, italic, underline, strikethrough } = annotations;
-
+    const isParagraph = plain_text.split('\n').length > 1;
     return (
         <a
             href={href && href}
@@ -16,7 +16,8 @@ const RichText = ({ rich_text }: RichTextProps) => {
                 strikethrough && 'line-through'
             } text-${color}-300`}
         >
-            {`${rich_text.plain_text}`}
+            {isParagraph && plain_text.split('\n').map((chunk, index) => <p key={chunk + index}>{chunk}</p>)}
+            {!isParagraph && plain_text}
         </a>
     );
 };
