@@ -1,37 +1,53 @@
-import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import axios from 'axios';
+import { Fragment, useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import RichTexts from '../components/post/RichTexts';
+import { POST } from '../types/post';
+import { useRouter } from 'next/router';
 
 function Post() {
-  const [data, setData] = useState([]);
+    const router = useRouter();
+    const [data, setData] = useState<POST[]>([]);
 
-  const fetchData = async () => {
-    const response = await axios.get("http://localhost:3000/db");
-    setData(response.data.results);
-  };
+    const fetchData = async () => {
+        const response = await axios.get('http://localhost:3000/db');
+        setData(response.data.results);
+    };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-  if (!data) return <></>;
+    if (!data) return <></>;
 
-  return (
-    <>
-      <h1 className="bg-red-700">Post</h1>
-      {data.map((datum) => {
-        if (!datum?.properties) return <></>;
-        const { title, publishedAt, status } = datum?.properties;
+    return (
+        <>
+            {data.map((datum) => {
+                if (!datum?.properties) return <></>;
+                const { name, publishedAt } = datum?.properties;
 
-        return (
-          <Fragment key={datum.id}>
-            {/* <h2>{title.title[0].plain_text}</h2> */}
-            <h2>{publishedAt.date.start}</h2>
-            <h2>{status.select.name}</h2>
-          </Fragment>
-        );
-      })}
-    </>
-  );
+                return (
+                    <div
+                        className="flex flex-row items-center p-3 mb-5 border-2 rounded-md hover:border-orange-300 cursor-pointer justify-between"
+                        key={datum.id}
+                        onClick={() => {
+                            router.push({
+                                pathname: '/post',
+                                query: {
+                                    page_id: datum.id,
+                                },
+                            });
+                        }}
+                    >
+                        <div className=" text-3xl">
+                            <RichTexts rich_texts={name.title} />
+                        </div>
+                        <h2>{dayjs(publishedAt.date?.start).format('YYYY년 MM월 DD일')}</h2>
+                    </div>
+                );
+            })}
+        </>
+    );
 }
 
 export default Post;

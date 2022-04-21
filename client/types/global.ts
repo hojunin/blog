@@ -1,3 +1,9 @@
+type ID = string;
+type DATE = string;
+type URL = string;
+type MAYBE<T> = undefined | T;
+type NULLABLE<T> = null | T;
+
 interface TEXT_TYPE {
     content: string;
     link: {
@@ -34,4 +40,4 @@ type ICON = {
 
 type COLOR_TYPE = 'default' | 'red' | 'purple' | 'blue' | 'yellow' | 'orange' | 'grey';
 
-export type { TEXT_TYPE, ANNOTATIONS, RICH_TEXT, ICON, COLOR_TYPE };
+export type { TEXT_TYPE, ANNOTATIONS, RICH_TEXT, ICON, COLOR_TYPE, ID, DATE, URL, MAYBE, NULLABLE };
