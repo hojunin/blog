@@ -8,7 +8,7 @@ interface ImageProps {
 const Image = ({ image }: ImageProps) => {
     const { file, external } = image;
     const getUrl = () => {
-        if (file in image) {
+        if (file) {
             return file?.url;
         }
         return external?.url;
